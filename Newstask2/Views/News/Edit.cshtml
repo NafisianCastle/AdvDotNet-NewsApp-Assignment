@@ -1,0 +1,13 @@
+﻿@model Newstask2.Models.Database.News
+
+@{ViewBag.Title = "Index"; }
+<h2>Edit</h2>
+<form action="/News/Edit" method="post">
+    <input type="hidden" name="Id" value="@Model.Id"/>
+    <input type="text" name="Title" placeholder="Title" value="@Model.Title" class="form-control"/>
+    <input type="text" name="Description" placeholder="Description" value="@Model.Description" class="form-control"/>
+    <input type="text" name="Category" placeholder="Category" value="@Model.Category" class="form-control"/>
+    <input type="datetime" name="PublishDate" value="@Model.PublishDate.ToString()" class="form-control"/>
+    <input type="submit" name="Save Changes"/>
+</form>
+

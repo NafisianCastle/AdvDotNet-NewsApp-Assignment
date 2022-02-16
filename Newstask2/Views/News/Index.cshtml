@@ -1,0 +1,26 @@
+﻿@model List<Newstask2.Models.Database.News>
+@{
+    ViewBag.Title = "Index";
+}
+<h2>Index</h2>
+<table class="table table-bordered">
+    <tr>
+        <th>Id</th>
+        <th>Title</th>
+        <th>Description</th>
+        <th>Category</th>
+        <th>Publish Date</th>
+    </tr>
+    @foreach (var n in Model)
+    {
+        <tr>
+            <td>@n.Id</td>
+            <td>@n.Title</td>
+            <td>@n.Description</td>
+            <td>@n.Category</td>
+            <td>@n.PublishDate</td>
+            <td><a href="/News/Edit/@n.Id">Edit</a></td>
+            <td><a href="/News/Delete/@n.Id">Delete</a></td>
+        </tr>
+    }
+</table>
