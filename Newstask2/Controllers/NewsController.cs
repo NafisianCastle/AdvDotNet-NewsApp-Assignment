@@ -51,9 +51,9 @@ namespace Newstask2.Controllers
         public ActionResult Edit(News newNews)
         {
             var db = new news_taskEntities2();
-            var oldNews = ( from u in db.News
-                            where u.Id == newNews.Id
-                            select u
+            var oldNews = (from u in db.News
+                           where u.Id == newNews.Id
+                           select u
                           ).FirstOrDefault();
             db.Entry(oldNews).CurrentValues.SetValues(newNews);
             db.SaveChanges();
@@ -63,13 +63,13 @@ namespace Newstask2.Controllers
         // GET: News/Delete/5
         public ActionResult Delete(int id)
         {
-            if (!ModelState.IsValid) return View();
+            if (!ModelState.IsValid) return RedirectToAction("Index");
             var db = new news_taskEntities2();
             var news = (from u in db.News where u.Id == id select u).FirstOrDefault();
-            db.News.Remove(news);
+            if (news != null) db.News.Remove(news);
             db.SaveChanges();
             return RedirectToAction("Index");
-           
+
         }
 
     }

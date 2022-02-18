@@ -26,5 +26,6 @@ namespace Newstask2.Models.Database
         }
     
         public virtual DbSet<News> News { get; set; }
+        public virtual DbSet<Product> Products { get; set; }
     }
 }
