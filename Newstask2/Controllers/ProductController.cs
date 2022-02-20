@@ -17,7 +17,9 @@ namespace Newstask2.Controllers
         // GET: Product/Details/5
         public ActionResult Details(int id)
         {
-            return View();
+            var db = new news_taskEntities2();
+            var data = (from p in db.Products where p.Id == id select p).FirstOrDefault();
+            return View(data);
         }
 
         // GET: Product/Create
@@ -30,18 +32,11 @@ namespace Newstask2.Controllers
         [HttpPost]
         public ActionResult Create(Product product)
         {
-            try
-            {
-                if (!ModelState.IsValid) return View(product);
-                var db = new news_taskEntities2();
-                db.Products.Add(product);
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
+            if (!ModelState.IsValid) return View(product);
+            var db = new news_taskEntities2();
+            db.Products.Add(product);
+            db.SaveChanges();
+            return RedirectToAction("Index");
         }
 
         // GET: Product/Edit/5

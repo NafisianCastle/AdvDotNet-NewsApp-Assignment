@@ -2,8 +2,9 @@
 
 <h2>Create</h2>
 <form action="/Product/Edit" method="post">
+    <input type="hidden" name="Id" value="@Model.Id" />
     <input type="text" name="Name" placeholder="Name" value="@Model.Name" class="form-control" />
     <input type="number" name="Price" placeholder="Price" value="@Model.Price" class="form-control" />
     <input type="number" name="Qty" placeholder="Qty" value="@Model.Qty" class="form-control" />
-    <input type="submit" name="Add" />
+    <input type="submit" name="Save changes" />
 </form>
